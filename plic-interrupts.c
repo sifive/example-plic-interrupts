@@ -7,7 +7,7 @@
 #include <metal/drivers/riscv_plic0.h>
 #include <metal/interrupt.h>
 #include <metal/led.h>
-#include <metal/machine/platform.h>
+#include <metal/platform.h>
 #include <metal/switch.h>
 #include <stdbool.h>
 #include <stdio.h>
