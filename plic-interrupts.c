@@ -52,21 +52,6 @@ void display_instruction (void) {
 }
 
 void metal_riscv_cpu_intc_mtip_handler(void) {
-    static bool state = false;
-    if (state) {
-        printf("#### Giving Switch 2 Priority for 10 seconds ####\n");
-        printf("#### Even if Switch 1 is on, Switch 2 has higher priority right now ####\n");
-        metal_switch_set_interrupt_priority(swch1, 2);
-        metal_switch_set_interrupt_priority(swch2, 3);
-    } else {
-        printf("**** Giving Switch 1 Priority for 10 seconds ****\n");
-        printf("#### Even if Switch 2 is on, Switch 1 has higher priority right now ####\n");
-        metal_switch_set_interrupt_priority(swch1, 3);
-        metal_switch_set_interrupt_priority(swch2, 2);
-    }    
-
-    state = !state;
-
     struct metal_cpu cpu = metal_cpu_get(metal_cpu_get_current_hartid());
     metal_cpu_set_mtimecmp(cpu, metal_cpu_get_mtime(cpu) + 10*RTC_FREQ);
 }
